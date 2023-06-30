@@ -1,21 +1,21 @@
+# library for temperature sensor
 import w1thermsensor
 import time
 import requests
 import json
 def readTemp():
+    # setting up the sensor
     sensor = w1thermsensor.W1ThermSensor()
-    temp = sensor.get_temperature()
-    # print(round(temp, 1))
     while True:
-        print("hello")    
+        # to send data to an API I had to replace the 0.0.0.0 with my computer's IP
         url = 'http://192.168.0.24:8000/api/temperature'
+        # reading the temperature
         temp = sensor.get_temperature()
         data = round(temp, 0)
         try:
             payload = {"temperature": data}
             headers = {"Content-Type": "application/json"}
             postingData = requests.post(url, data=json.dumps(payload), headers=headers)
-            print("working ?")
             if postingData.status_code == 201:
                 print("succesfull")
             else:
@@ -23,5 +23,5 @@ def readTemp():
         except  requests.exceptions.ConnectionError as e:
             print(e)
 
-        time.sleep(120)
+        time.sleep(3600)
 
