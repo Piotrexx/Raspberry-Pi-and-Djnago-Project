@@ -5,7 +5,7 @@ const Header = () => {
     <div>
         <Link to='/'>Home</Link>
         <span> | </span>
-        <Link to="/login"></Link>
+        <Link to="/login">Login</Link>
     </div>
   )
 }
