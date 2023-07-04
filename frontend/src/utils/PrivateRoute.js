@@ -1,16 +1,4 @@
-// import React from 'react';
-// import { Route } from 'react-router-dom';
-
-// function PrivateRoute(props) {
-//   const { children, ...rest } = props;
-//   return (
-//     <Route {...rest}>
-//       {children}
-//     </Route>
-//   );
-// }
 import React from 'react';
-
 import { Navigate, Outlet } from 'react-router-dom';
 
 const PrivateRoute = () => {
