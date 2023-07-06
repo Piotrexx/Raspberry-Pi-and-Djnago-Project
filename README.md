@@ -14,7 +14,7 @@ npm i
 
 ### Install packages for Python (backend)
 
-**This package allows you to whitelist urls that you want to access your API, [full documantation](https://github.com/adamchainz/django-cors-headers)**
+**Cors-headers package allows you to whitelist urls that you want to access your API, [full documantation](https://github.com/adamchainz/django-cors-headers)**
 
 ```shell
 pip install django-cors-headers
