@@ -6,9 +6,9 @@ const LoginPage = () => {
   return (
     <div>
         <form onSubmit={loginUser}>
-            <input type='text' name='username' placeholder='Enter your username'/>
-            <input type='password' name='password' placeholder='Enter your password'/>
-            <input type='submit'/>
+            <input className='border-2 rounded'type='text' name='username' placeholder='Enter your username'/>
+            <input className='border-2 rounded' type='password' name='password' placeholder='Enter your password'/>
+            <input className='border-2 rounded bg-rose-500 'type='submit'/>
         </form>
     </div>
   )

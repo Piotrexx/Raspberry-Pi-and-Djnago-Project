@@ -11,7 +11,7 @@ def readTemp():
         url = 'http://192.168.0.24:8000/api/temperature'
         # reading the temperature
         temp = sensor.get_temperature()
-        data = round(temp, 0)
+        data = round(temp, 1)
         try:
             payload = {"temperature": data}
             headers = {"Content-Type": "application/json"}

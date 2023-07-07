@@ -5,10 +5,10 @@ import LoginPage from './pages/LoginPage'
 import Header from './components/Header' 
 import PrivateRoute from './utils/PrivateRoute'
 import { AuthProvider } from './context/AuthContext'
-
+import AllRecords from './pages/AllRecords'
 function App() {
   return (
-    <div className='App'>
+    <div className=' h-[100vh] text-[18px] '>
       <Router>
         <AuthProvider>
         <Header/>
@@ -17,6 +17,7 @@ function App() {
             <Route exact  path='/' element={<HomePage />} />
           </Route>
           <Route path='/login' element={<LoginPage />} />
+          <Route path='/allrecords' element={<AllRecords/>}/>
         </Routes>
         </AuthProvider>
       </Router>

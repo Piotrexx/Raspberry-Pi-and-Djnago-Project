@@ -1,7 +1,8 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-const HomePage = () => {
+
+function AllRecords() {
   const [data, setData] = useState([]);
   const options = {
     year: "numeric",
@@ -24,16 +25,11 @@ const HomePage = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  // console.log(data.length)
-  // console.log(data)
-  let latestRecords = data.slice(-3, data.length);
-  latestRecords = latestRecords.reverse();
-  // console.log(latestRecords)
   return (
     <div>
-    <h1>Latest records</h1>
+
       <div className=" grid grid-cols-3 gap-4">
-        {latestRecords.map((item, index) => (
+        {data.map((item, index) => (
           <ul key={index}>
             <p>{index + 1}.</p>
             <li className="font-bold text-center">
@@ -44,12 +40,10 @@ const HomePage = () => {
             </li>
           </ul>
         ))}
-        <Link to="/AllRecords">
-          <button>See all records</button>
-        </Link>
       </div>
+      <Link to="/">Go Back</Link>
     </div>
   );
-};
+}
 
-export default HomePage;
+export default AllRecords;
