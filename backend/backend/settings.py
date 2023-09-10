@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'API',
     'corsheaders',
     'rest_framework',
+    'channels',
 ]
 REST_FRAMEWORK = {
 
@@ -52,9 +53,13 @@ REST_FRAMEWORK = {
     )
 }
 
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
 
-
-
+ASGI_APPLICATION = 'backend.asgi.application'
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
