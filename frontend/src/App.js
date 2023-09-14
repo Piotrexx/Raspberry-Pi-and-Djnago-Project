@@ -6,6 +6,7 @@ import Header from './components/Header'
 import PrivateRoute from './utils/PrivateRoute'
 import { AuthProvider } from './context/AuthContext'
 import AllRecords from './pages/AllRecords'
+import { TestPage } from './pages/TestPage'
 function App() {
   return (
     <div className=' h-[100vh] text-[18px] '>
@@ -18,6 +19,7 @@ function App() {
           </Route>
           <Route path='/login' element={<LoginPage />} />
           <Route path='/allrecords' element={<AllRecords/>}/>
+          <Route path='/test' element={<TestPage/>} />
         </Routes>
         </AuthProvider>
       </Router>

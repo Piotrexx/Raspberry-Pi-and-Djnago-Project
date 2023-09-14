@@ -11,6 +11,7 @@ class TemperatureAPIView(viewsets.ModelViewSet):
     serializer_class = TemperatureSerializer
     queryset = TemperatureNew.objects.all()
 
+
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
