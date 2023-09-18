@@ -34,6 +34,11 @@ pip install djangorestframework
 pip install djangorestframework-simplejwt
 ```
 
+**Django channels is a third-party application that provides a usefull set of tools to create WebSocket connection for real time communication, [full documantaion](https://channels.readthedocs.io/en/latest/index.html)**
+
+```shell
+pip install django-channels
+```
 
 ### Installing packages for you Raspberry Pi
 

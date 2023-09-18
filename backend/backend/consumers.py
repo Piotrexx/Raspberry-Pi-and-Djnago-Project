@@ -2,11 +2,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 from API.serializers import TemperatureSerializer
 from API.models import TemperatureNew
 import json
-import requests
 from channels.db import database_sync_to_async
-from django.dispatch import receiver
-from django.db.models.signals import post_save
-import datetime
 import asyncio
 
 class TemperatureConsumer(AsyncWebsocketConsumer):
