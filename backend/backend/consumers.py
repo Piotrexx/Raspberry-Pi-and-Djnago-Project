@@ -6,14 +6,18 @@ import requests
 from channels.db import database_sync_to_async
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+import datetime
+import asyncio
+
 class TemperatureConsumer(AsyncWebsocketConsumer):
     
     async def connect(self):
         await self.accept()
-        # while True:
-        await self.send_temperature()
-        # self.send(await self.get_temeperature())
-        # print(await self.get_temeperature())
+        while True:
+            await self.send_temperature()
+            await asyncio.sleep(60)  
+
+        
         
 
 
@@ -41,9 +45,4 @@ class TemperatureConsumer(AsyncWebsocketConsumer):
         # print(json.dumps(data))
         await self.send(data)
 
-    @receiver(post_save, sender=TemperatureNew)
-    @database_sync_to_async
-    def sends_data_on_new_record(self, sender, instance, created, **kwags):
-        if created:
-            self.send_temperature()
 
