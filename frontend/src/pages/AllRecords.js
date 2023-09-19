@@ -3,7 +3,25 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function AllRecords() {
-  const [data, setData] = useState([]);
+  let [data, setData] = useState([])
+
+  useEffect(() => {
+    const socket = new WebSocket("ws://127.0.0.1:8000/ws/socket-server/")
+
+    socket.onopen = () => {
+      
+    };
+
+    socket.onmessage = (event) => {
+   
+      setData(JSON.parse(event.data))
+      console.log(JSON.parse(event.data))
+    };
+
+    return () => {
+      socket.close()
+    };
+  }, [])
   const options = {
     year: "numeric",
     month: "long",
@@ -18,16 +36,8 @@ function AllRecords() {
     return dateTime.toLocaleString(undefined, options);
   }
 
-  useEffect(() => {
-    fetch("http://localhost:8000/api/temperature/")
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.log(error));
-  }, []);
-
-  return (
+return (
     <div>
-
       <div className=" grid grid-cols-3 gap-4">
         {data.map((item, index) => (
           <ul key={index}>
@@ -40,10 +50,13 @@ function AllRecords() {
             </li>
           </ul>
         ))}
+        <Link to="/AllRecords">
+          <button>See all records</button>
+        </Link>
       </div>
-      <Link to="/">Go Back</Link>
     </div>
   );
-}
+};
+
 
 export default AllRecords;

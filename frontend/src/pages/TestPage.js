@@ -1,10 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// ws://127.0.0.1:8000/ws/socket-server/
+
 export const TestPage = () => {
   let [data, setData] = useState([])
-  // const websocket = new WebSocket(`ws://127.0.0.1:8000/ws/socket-server/`)
+
   useEffect(() => {
     const socket = new WebSocket("ws://127.0.0.1:8000/ws/socket-server/")
 
@@ -35,11 +35,13 @@ export const TestPage = () => {
     const dateTime = new Date(date);
     return dateTime.toLocaleString(undefined, options);
   }
-  // console.log(data)
+
+  let latestRecords = data.slice(-3, data.length);
+  latestRecords = latestRecords.reverse();
   return (
     <div>
       <div className=" grid grid-cols-3 gap-4">
-        {data.map((item, index) => (
+        {latestRecords.map((item, index) => (
           <ul key={index}>
             <p>{index + 1}.</p>
             <li className="font-bold text-center">
@@ -54,15 +56,6 @@ export const TestPage = () => {
           <button>See all records</button>
         </Link>
       </div>
-      {/* {data
-        ? data.map((item) => {
-            return (
-              <div>
-                <p>{item}</p>
-              </div>
-            );
-          })
-        : <p>loading...</p>} */}
     </div>
   );
 };

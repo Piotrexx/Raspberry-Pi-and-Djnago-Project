@@ -19,7 +19,7 @@ function App() {
           </Route>
           <Route path='/login' element={<LoginPage />} />
           <Route path='/allrecords' element={<AllRecords/>}/>
-          <Route path='/test' element={<TestPage/>} />
+          {/* <Route path='/test' element={<TestPage/>} /> */}
         </Routes>
         </AuthProvider>
       </Router>
